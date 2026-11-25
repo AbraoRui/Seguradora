@@ -1,0 +1,5 @@
+<!-- Adicione este ItemGroup ao arquivo .csproj da apresentação. -->
+<ItemGroup>
+  <ProjectReference Include="..\Seguradora.Dados\Seguradora.Dados.csproj" />
+  <ProjectReference Include="..\Seguradora.Negocio\Seguradora.Negocio.csproj" />
+</ItemGroup>

@@ -9,7 +9,8 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Segurandora.Negocio\Segurandora.Negocio.csproj" />
+    <ProjectReference Include="..\Segurandora.Dados\Seguradora.Dados.csproj" />
+    <ProjectReference Include="..\Segurandora.Negocio\Seguradora.Negocio.csproj" />
   </ItemGroup>
 
 </Project>

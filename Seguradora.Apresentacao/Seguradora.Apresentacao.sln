@@ -5,9 +5,9 @@ VisualStudioVersion = 17.14.37906.3
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Seguradora.Apresentacao", "Seguradora.Apresentacao.csproj", "{372BBDBC-550B-4496-ACF9-A0EED35D97EE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Segurandora.Negocio", "..\Segurandora.Negocio\Segurandora.Negocio.csproj", "{355936D4-8083-41BE-8A62-2BBBCB70F145}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Seguradora.Negocio", "..\Segurandora.Negocio\Seguradora.Negocio.csproj", "{355936D4-8083-41BE-8A62-2BBBCB70F145}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Segurandora.Dados", "..\Segurandora.Dados\Segurandora.Dados.csproj", "{0B691193-F4D1-4EF8-A5AB-AFE052EC0D1F}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Seguradora.Dados", "..\Segurandora.Dados\Seguradora.Dados.csproj", "{0B691193-F4D1-4EF8-A5AB-AFE052EC0D1F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

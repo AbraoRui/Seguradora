@@ -1,7 +1,7 @@
-﻿using Segurandora.Dados;
+﻿using Seguradora.Dados;
 using System.Collections.Generic;
 
-namespace Segurandora.Negocio
+namespace Seguradora.Negocio
 {
     public class ClienteService
     {

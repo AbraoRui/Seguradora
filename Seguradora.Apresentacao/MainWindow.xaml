@@ -5,8 +5,30 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Seguradora.Apresentacao"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    <Grid>
+        Title="Seguradora - Cadastro de Clientes" Height="450" Width="800">
+    <Grid Margin="20">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <!-- Campos de Cadastro -->
+        <StackPanel Grid.Row="0" Orientation="Horizontal" Margin="0,0,0,10">
+            <TextBlock Text="Nome:" VerticalAlignment="Center" Margin="0,0,5,0"/>
+            <TextBox x:Name="txtNome" Width="150" Margin="0,0,15,0"/>
+
+            <TextBlock Text="CPF:" VerticalAlignment="Center" Margin="0,0,5,0"/>
+            <TextBox x:Name="txtCpf" Width="120" Margin="0,0,15,0"/>
+
+            <Button x:Name="btnSalvar"
+                    Content="Salvar Cliente"
+                    Width="100"/>
+        </StackPanel>
+
+        <!-- Lista de Clientes -->
+        <DataGrid Grid.Row="3" x:Name="dgClientes" AutoGenerateColumns="True" Margin="0,10,0,0"/>
 
     </Grid>
 </Window>
