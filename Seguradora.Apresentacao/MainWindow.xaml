@@ -5,30 +5,74 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Seguradora.Apresentacao"
         mc:Ignorable="d"
-        Title="Seguradora - Cadastro de Clientes" Height="450" Width="800">
-    <Grid Margin="20">
+        Title="Seguradora - Cadastro de Clientes" Height="450" Width="800"
+        WindowStartupLocation="CenterScreen" 
+        WindowState="Maximized"
+        Background="#F0F2F5" FontFamily="Segoe UI">
+
+    <!-- 1. Removemos a margem superior do Grid para o Menu colar no topo -->
+    <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
+            <!-- Linha 0: Menu -->
             <RowDefinition Height="Auto"/>
-            <RowDefinition Height="Auto"/>
+            <!-- Linha 1: Campos de Cadastro -->
             <RowDefinition Height="*"/>
+            <!-- Linha 2: DataGrid -->
         </Grid.RowDefinitions>
 
-        <!-- Campos de Cadastro -->
-        <StackPanel Grid.Row="0" Orientation="Horizontal" Margin="0,0,0,10">
-            <TextBlock Text="Nome:" VerticalAlignment="Center" Margin="0,0,5,0"/>
-            <TextBox x:Name="txtNome" Width="150" Margin="0,0,15,0"/>
+        <!-- 2. MENU SUPERIOR (Fica na Linha 0, no topo) -->
+        <Menu Grid.Row="0" Background="White" Foreground="#333333" BorderBrush="#E0E0E0" BorderThickness="0,0,0,1" FontSize="14" VerticalAlignment="Top">
+            <MenuItem Header="Cadastrar" Padding="15,10" Background="Transparent">
+                <MenuItem Header="Cliente" Click="MenuCadastrarCliente_Click" Padding="15,8">
+                    <MenuItem.Style>
+                        <Style TargetType="MenuItem">
+                            <Setter Property="Background" Value="White"/>
+                            <Setter Property="Foreground" Value="#333333"/>
+                            <Setter Property="FontWeight" Value="SemiBold"/>
+                            <Style.Triggers>
+                                <Trigger Property="IsHighlighted" Value="True">
+                                    <Setter Property="Background" Value="#E0E0E0"/>
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                    </MenuItem.Style>
+                </MenuItem>
+            </MenuItem>
+        </Menu>
 
-            <TextBlock Text="CPF:" VerticalAlignment="Center" Margin="0,0,5,0"/>
-            <TextBox x:Name="txtCpf" Width="120" Margin="0,0,15,0"/>
+        <!-- 3. CAMPOS DE Pesquisa (Ficam na Linha 1, abaixo do menu) -->
+        <StackPanel Grid.Row="1" Orientation="Horizontal" Margin="20,20,20,10">
+            <TextBlock Text="Pesquisar Nome:" VerticalAlignment="Center" Margin="0,0,5,0"/>
+            <TextBox x:Name="txtPesquisaNome" Width="150" Margin="0,0,15,0"/>
 
-            <Button x:Name="btnSalvar"
+            <Button x:Name="btnPesquisar"
+                Content="Pesquisar"
+                Width="100" 
+                Height="25"
+                Click="btnPesquisar_Click"/>
+
+            <Button x:Name="btnLimpar"
+                Content="Limpar Filtro"
+                Width="100" 
+                Height="25"
+                Margin="10,0,0,0"
+                Click="btnLimpar_Click"/>
+
+            <!--TextBlock Text="CPF:" VerticalAlignment="Center" Margin="0,0,5,0"/>
+            <TextBox x:Name="txtCpf" Width="120" Margin="0,0,15,0"/-->
+
+            <!--Button x:Name="btnSalvar"
                     Content="Salvar Cliente"
-                    Width="100"/>
+                    Width="100" Margin="0,0,15,0" Click="btnSalvar_Click"/-->
+
+            <!--Button x:Name="btnAbrirCadastro" 
+                    Content="Abrir Tela de Cadastro" 
+                    Width="150" 
+                    Click="btnAbrirCadastro_Click"/-->
         </StackPanel>
 
-        <!-- Lista de Clientes -->
-        <DataGrid Grid.Row="3" x:Name="dgClientes" AutoGenerateColumns="True" Margin="0,10,0,0"/>
-
+        <!-- 4. DATAGRID (Fica na Linha 2, ocupando o resto da tela) -->
+        <DataGrid Grid.Row="2" x:Name="dgClientes" AutoGenerateColumns="True" Margin="20,10,20,20"/>
     </Grid>
 </Window>

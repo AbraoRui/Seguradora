@@ -1,4 +1,4 @@
-﻿namespace Seguradora.Dados
+﻿namespace Seguradora.Dados.Models
 {
     public class Cliente
     {

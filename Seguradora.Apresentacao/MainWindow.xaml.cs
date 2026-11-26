@@ -9,6 +9,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using Seguradora.Dados;
+using Seguradora.Dados.Models;
 using Seguradora.Negocio;
 
 namespace Seguradora.Apresentacao
@@ -27,27 +28,74 @@ namespace Seguradora.Apresentacao
 
             //txtEmail = (TextBox)this.FindName("txtEmail");
 
-            btnSalvar.Click += btnSalvar_Click;
+            //btnSalvar.Click += btnSalvar_Click;
+
+            // Tenta carregar os dados, mas captura o erro para não quebrar a janela
+            try
+            {
+                CarregarClientes();
+            }
+            catch (Exception ex)
+            {
+                // Mostra a mensagem real do erro (se houver uma exceção interna, mostra ela)
+                MessageBox.Show(ex.InnerException?.Message ?? ex.Message, "Erro ao conectar ao banco");
+            }
         }
 
-        // AQUI: O método que será executado quando o botão for clicado
-        private void btnSalvar_Click(object sender, RoutedEventArgs e)
+        private void CarregarClientes()
         {
-            var novoCliente = new Cliente
-            {
-                Nome = txtNome.Text,
-                CPF = txtCpf.Text,               
-            };
-
-            _clienteService.AdicionarCliente(novoCliente);
-
-            // Atualiza o DataGrid
             dgClientes.ItemsSource = null;
             dgClientes.ItemsSource = _clienteService.ObterTodos();
+        }       
 
-            // Limpa os campos
-            txtNome.Clear();
-            txtCpf.Clear();
+        private void btnAbrirCadastro_Click(object sender, RoutedEventArgs e)
+        {
+            // Instancia a nova janela que criamos anteriormente
+            var janelaCadastro = new CadastroClienteWindow();
+
+            // Abre a janela como modal (bloqueia a MainWindow até que ela seja fechada)
+            bool? resultado = janelaCadastro.ShowDialog();
+
+            // Se o usuário clicou em "Salvar" na nova janela, atualiza o DataGrid
+            if (resultado == true)
+            {
+                CarregarClientes();
+            }
+        }
+
+        private void btnPesquisar_Click(object sender, RoutedEventArgs e)
+        {
+            // TODO: Implemente a lógica de pesquisa aqui
+            string termoPesquisa = txtPesquisaNome.Text.Trim();
+
+            // Se o campo estiver vazio, recarrega todos os clientes
+            if (string.IsNullOrWhiteSpace(termoPesquisa))
+            {
+                CarregarClientes();
+                return;
+            }
+
+            // Atualiza o DataGrid com o resultado da pesquisa
+            dgClientes.ItemsSource = null;
+            dgClientes.ItemsSource = _clienteService.PesquisarPorNome(termoPesquisa);
+        }
+
+        private void btnLimpar_Click(object sender, RoutedEventArgs e)
+        {
+            txtPesquisaNome.Clear();
+            CarregarClientes(); // Recarrega a lista completa
+        }
+
+        private void MenuCadastrarCliente_Click(object sender, RoutedEventArgs e)
+        {
+            // TODO: Implemente a lógica de cadastro de cliente aqui
+            var janelaCadastro = new CadastroClienteWindow();
+            bool? resultado = janelaCadastro.ShowDialog();
+
+            if (resultado == true)
+            {
+                CarregarClientes(); // Atualiza o DataGrid após cadastrar
+            }
         }
     }
 }
